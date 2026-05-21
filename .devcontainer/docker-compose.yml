@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/typescript-node:24
+    volumes:
+      # winnow-workspace (private) — this repo
+      # Assumes winnow and winnow-workspace are siblings in the same parent dir
+      - ..:/workspace:cached
+
+      # winnow (OSS) — sibling repo
+      - ../../winnow:/projects/winnow:cached
+
+      # npm cache — warm across rebuilds
+      - winnow-npm-cache:/home/node/.npm
+
+      # OpenCode config + API keys — survives rebuilds
+      - winnow-opencode-config:/home/node/.config/opencode
+
+      # General tool data
+      - winnow-local-share:/home/node/.local/share
+
+    command: sleep infinity
+    user: node
+    working_dir: /workspace
+    environment:
+      NPM_CONFIG_PREFIX: /workspace/.npm-global
+
+volumes:
+  winnow-npm-cache:
+  winnow-opencode-config:
+  winnow-local-share:

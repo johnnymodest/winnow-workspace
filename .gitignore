@@ -1,0 +1,8 @@
+# Generated outputs — review before committing
+research/
+outputs/
+
+# Standard
+node_modules/
+.DS_Store
+*.log
