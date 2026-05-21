@@ -9,7 +9,7 @@ services:
       - ..:/workspace:cached
 
       # winnow (OSS) — sibling repo
-      - ../../winnow:/projects/winnow:cached
+      - ../winnow:/projects/winnow:cached
 
       # npm cache — warm across rebuilds
       - winnow-npm-cache:/home/node/.npm
