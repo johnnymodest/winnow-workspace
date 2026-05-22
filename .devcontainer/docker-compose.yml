@@ -15,10 +15,7 @@ services:
       - winnow-npm-cache:/home/node/.npm
 
       # OpenCode config + API keys — survives rebuilds
-      - winnow-opencode-config:/home/node/.config/opencode
-
-      # General tool data
-      - winnow-local-share:/home/node/.local/share
+      - winnow-opencode-data:/home/node/.local/share/opencode
 
     command: sleep infinity
     user: node
@@ -28,5 +25,4 @@ services:
 
 volumes:
   winnow-npm-cache:
-  winnow-opencode-config:
-  winnow-local-share:
+  winnow-opencode-data:

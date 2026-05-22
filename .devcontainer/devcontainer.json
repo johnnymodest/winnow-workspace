@@ -5,7 +5,7 @@
   "workspaceFolder": "/workspace",
 
   "postCreateCommand": "bash /workspace/.devcontainer/post-create.sh",
-
+  "postStartCommand": "sudo chown -R node:node ~/.local && echo 'export PATH=\"$HOME/.opencode/bin:$PATH\"' >> ~/.bashrc",
   "customizations": {
     "vscode": {
       "extensions": [

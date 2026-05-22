@@ -1,12 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -euo pipefail
 
 echo "==> Setting up Winnow dev environment..."
 
 # --- npm global path ---
 export PATH="/workspace/.npm-global/bin:$PATH"
-echo 'export PATH="/workspace/.npm-global/bin:$PATH"' >> ~/.bashrc
-echo 'export PATH="/workspace/.npm-global/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="$HOME/.opencode/bin:$PATH"' >> ~/.bashrc
+echo 'export PATH="$HOME/.opencode/bin:$PATH"' >> ~/.zshrc
+
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 
 # --- BMAD ---
 echo "==> Installing BMAD..."
@@ -14,10 +17,8 @@ npm install -g bmad-method
 echo "    BMAD: $(bmad --version 2>/dev/null || echo 'installed')"
 
 # --- OpenCode ---
-# Verify at https://opencode.ai/docs if this fails
-echo "==> Installing OpenCode..."
-curl -fsSL https://opencode.ai/install | sh 2>/dev/null \
-  || echo "    WARNING: OpenCode install failed — check https://opencode.ai/docs"
+curl -fsSL https://opencode.ai/install | bash
+sudo chown -R node:node ~/.local
 
 # --- Ensure .npm-global exists ---
 mkdir -p /workspace/.npm-global
