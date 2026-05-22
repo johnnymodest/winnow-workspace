@@ -8,7 +8,7 @@ node_modules/
 *.log
 
 # BMAD boilerplate
-_bmad
+#_bmad
 
 # env files
 .env
